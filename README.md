@@ -67,7 +67,7 @@ out
 
 JSONの要素は下の通りです。
 
-* Timestamp : ISO形式のタイムスタンプ。
+* Timestamp : ISO形式のタイムスタンプ。時差のoffsetは引数 `start` の時差が適用されます
 * Maximum: 統計値。統計方法に応じてラベルが変化する。
 * Unit: 統計値の単位。
 * Namespace: CloudWatch メトリクスの名前空間。
@@ -86,6 +86,28 @@ JSONの要素は下の通りです。
 * boto3 1.9.214
 
 ## Usage
+
+```
+$ ./aws-dashbaord-export.py -h
+usage: aws-dashbaord-export.py [-h] --dashboard dashboardName --start
+                               startTimeStamp --end endTimeStamp
+
+exporting AWS CloudWatch metrics on dashboard
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --dashboard dashboardName
+                        Target dashboard name
+  --start startTimeStamp
+                        ISO 8601 format timestamp for the start of the metric
+                        range.
+  --end endTimeStamp    ISO 8601 format timestamp for the start of the metric
+                        range.
+
+ex:
+$ aws-dashbaord-export.py --dashboard my-dashboard --start '2019-08-24T00:00:00+09:00'  --end '2019-08-25T00:00:00+09:00'
+```
+
 
 ### AWSの認証情報
 
